@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/smfworks/persona-card/blob/main/public/schema/persona-card.schema.json",
+  "title": "PersonaCard",
+  "description": "Machine-readable agent persona one-pager. Other tools can emit this shape so Persona Card can print a shareable card from a SOUL.md, system prompt, or freeform persona. Heuristic demo — not an identity registry and not an audit.",
+  "type": "object",
+  "required": ["name"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "smf.persona-card.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^PC-[0-9A-F]{4}$",
+      "description": "Persona serial printed on the card."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Agent display name."
+    },
+    "role": {
+      "type": "string",
+      "description": "Role or title chip."
+    },
+    "title": {
+      "type": "string",
+      "description": "Alias for role."
+    },
+    "tagline": {
+      "type": "string",
+      "description": "One-line voice of the persona."
+    },
+    "description": {
+      "type": "string",
+      "description": "Alias for tagline."
+    },
+    "voice": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Tone / voice bullets."
+    },
+    "tone": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for voice."
+    },
+    "values": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Standing values / principles."
+    },
+    "principles": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for values."
+    },
+    "must": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Must / always boundaries."
+    },
+    "mustNot": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Must-not / never boundaries."
+    },
+    "must_not": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for mustNot."
+    },
+    "never": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for mustNot."
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "must": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "mustNot": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools or domain focus chips."
+    },
+    "domain": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" } }
+      ],
+      "description": "Alias for tools."
+    },
+    "signature": {
+      "type": "string",
+      "description": "Optional footer signature line."
+    },
+    "signOff": {
+      "type": "string",
+      "description": "Alias for signature."
+    },
+    "markdown": {
+      "type": "string",
+      "description": "Optional SOUL.md / prompt body. Parsed heuristically if present."
+    },
+    "soul": {
+      "type": "string",
+      "description": "Alias for markdown."
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Alias for markdown."
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "heuristic": {
+      "type": "boolean",
+      "const": true,
+      "description": "Always true — this is a demo printer, not an identity engine."
+    }
+  }
+}
