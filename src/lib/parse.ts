@@ -296,7 +296,8 @@ function extractYouAre(text: string): { name: string; role: string } {
 }
 
 function extractSignature(text: string): string | null {
-  const quoted = text.match(/^[—–-]\s+\S[^\n]{3,80}$/m);
+  // Em/en dash only — ASCII "-" is how markdown bullets start.
+  const quoted = text.match(/^[—–]\s+\S[^\n]{3,80}$/m);
   if (quoted) return quoted[0].trim();
   const signOff = text.match(/\b(?:always (?:end|sign off|close) with)\s+["“]?([^"”\n]{4,80})["”]?/i);
   if (signOff) return signOff[1].trim();

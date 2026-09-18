@@ -61,6 +61,15 @@ describe("parsePersona markdown", () => {
     assert.match(parsed.signature ?? "", /stacks closed/i);
   });
 
+  it("does not treat markdown bullets as a signature", () => {
+    const parsed = parsePersona(
+      "# Helix\n\nYou are a lab scribe.\n\n## Voice\n- Short, dated notes\n- No fluff\n",
+    );
+    assert.equal(parsed.name, "Helix");
+    assert.equal(parsed.signature, null);
+    assert.ok(parsed.voice.some((line) => /short, dated notes/i.test(line)));
+  });
+
   it("reads YAML frontmatter overrides", () => {
     const parsed = parsePersona(
       "---\nname: Reed\nrole: Ops dispatcher\ntagline: Stabilize first.\n---\n\n## Voice\n- Short status lines\n",

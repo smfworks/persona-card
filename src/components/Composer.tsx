@@ -77,7 +77,7 @@ export function Composer({
             id="name-input"
             value={overrides.name}
             onChange={(event) => patch({ name: event.target.value })}
-            placeholder="Marlowe"
+            placeholder="Ada"
             autoComplete="off"
           />
         </div>
@@ -89,7 +89,7 @@ export function Composer({
             id="role-input"
             value={overrides.role}
             onChange={(event) => patch({ role: event.target.value })}
-            placeholder="Research librarian"
+            placeholder="Lab librarian"
             autoComplete="off"
           />
         </div>
@@ -101,7 +101,7 @@ export function Composer({
             id="tagline-input"
             value={overrides.tagline}
             onChange={(event) => patch({ tagline: event.target.value })}
-            placeholder="Cite the shelf. Invent nothing."
+            placeholder="One line the agent lives by"
             autoComplete="off"
           />
         </div>
