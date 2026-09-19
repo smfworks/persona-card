@@ -171,7 +171,7 @@ export default function App() {
     <div className="page">
       <div className="ambient" aria-hidden="true" />
       <Header />
-      <SisterStrip />
+      <SisterStrip current="persona-card" />
       <main className="layout">
         <Composer
           raw={raw}
